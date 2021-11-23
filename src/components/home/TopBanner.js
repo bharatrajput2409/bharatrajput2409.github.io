@@ -4,16 +4,20 @@ import constant from "../../theme/constants.json";
 import AppButton from "../../common/Button";
 import FloatingCards from "./FloatingCards";
 import TechCard from "./floating-cards/TechCard";
+import bg_image from "../../media/top_banner_bg.svg";
 const useStyles = makeStyles(() => ({
-  root: {},
+  root: {
+    background: "linear-gradient(98.77deg, #FFFFFF 4.47%, #F1F4F8 119.99%)",
+    backgroundImage: `url(${bg_image})`,
+  },
   wraper: {
     display: "flex",
     maxWidth: "1400px",
-    margin: "4rem auto",
+    margin: "auto",
+    paddingTop: "3rem",
   },
   leftContainer: {
     width: "50%",
-    background: "white",
   },
   rightContainer: {
     width: "50%",
@@ -45,7 +49,7 @@ function TopBanner() {
         <div className={classes.leftContainer}>
           <Typography className={classes.hiContainer}>Hi,</Typography>
           <Typography className={classes.nameContainer}>
-            I'm Bharat Singh Shekhawat
+            I'm Bharat Singh Rajput
           </Typography>
           <Typography className={classes.myDescription}>
             I am a passionate developer having knolwedge of may technology and

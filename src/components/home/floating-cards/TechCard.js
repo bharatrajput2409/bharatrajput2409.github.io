@@ -1,8 +1,9 @@
 import React from "react";
-import { makeStyles, Paper, Typography } from "@material-ui/core";
+import { alpha, makeStyles, Paper, Typography } from "@material-ui/core";
 
 import constants from "../../../theme/constants.json";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import TechColumn from "./TechColumn";
 
 const useStyles = makeStyles(() => ({
   wraper: {},
@@ -14,7 +15,7 @@ const useStyles = makeStyles(() => ({
     boxShadow:
       "rgba(159, 162, 191, 0.18) 0px 9px 16px, rgba(159, 162, 191, 0.32) 0px 2px 2px",
     margin: ".5rem",
-    animation: "cardUpDown 2.1s ease-in-out infinite 600ms",
+    animation: "cardLeftRight 2.1s ease-in-out infinite 600ms",
     position: "relative",
   },
   heading: {
@@ -27,35 +28,20 @@ const useStyles = makeStyles(() => ({
     left: "15px",
     right: "15px",
     bottom: "15px",
-    border: `1px solid rgba(0,0,0,0.3)`,
+    border: `1px solid ${constants.blueColor}`,
   },
   verticalLine: {
     position: "absolute",
     left: "15px",
     top: "3rem",
     bottom: "15px",
-    border: `1px solid rgba(0,0,0,0.3)`,
+    border: `1px solid ${constants.blueColor}`,
   },
   markerline: {
     position: "absolute",
     top: "0px",
     transform: "translate(-50%,-50%)",
-    color: "rgba(0,0,0,0.3)",
-  },
-  column: {
-    position: "absolute",
-    width: "50px",
-    bottom: "16px",
-    borderRadius: ".25rem .25rem 0 0",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    "&>*": {
-      transform: "rotateZ(-90deg)",
-      color: "white",
-      fontSize: "24px",
-      fontWeight: "600",
-    },
+    color: constants.blueColor,
   },
 }));
 
@@ -64,32 +50,41 @@ function TechCard() {
   const techArray = [
     {
       name: "React",
-      top: "50px",
-      left: "30px",
-      background: "#f44336",
-    },
-    {
-      name: "Django",
-      top: "80px",
-      left: "110px",
-      background: "#009688",
-    },
-    {
-      name: "NodeJs",
-      top: "50px",
-      left: "190px",
-      background: "#ffc107",
+      background: "rgba(0,0,0,0.0)",
+      knowledge: 9,
     },
     {
       name: "Redux",
-      top: "50px",
-      left: "270px",
-      background: "#ef6c00",
+      background: "rgba(0,0,0,0.0)",
+      knowledge: 8,
+    },
+    {
+      name: "NodeJs",
+      background: "rgba(0,0,0,0.0)",
+      knowledge: 9,
+    },
+    {
+      name: "JavaScript",
+      background: "rgba(0,0,0,0.0)",
+      knowledge: 9,
+    },
+    {
+      name: "Django",
+      background: "rgba(0,0,0,0.0)",
+      knowledge: 8,
+    },
+    {
+      name: "C++",
+      background: "rgba(0,0,0,0.0)",
+      knowledge: 9,
     },
   ];
+  const handleHover = (e) => {
+    // console.log(e);
+  };
   return (
     <div className={classes.wraper}>
-      <Paper className={classes.root}>
+      <Paper className={classes.root} id="temp" onMouseOver={handleHover}>
         <div className={classes.heading}>Tech Knowledge</div>
         <div className={classes.horizontalLine}>
           <span
@@ -104,18 +99,8 @@ function TechCard() {
             <ExpandLessIcon />
           </span>
         </div>
-        {techArray.map((tech) => (
-          <div
-            className={classes.column}
-            key={tech.name}
-            style={{
-              left: tech.left,
-              top: tech.top,
-              background: tech.background,
-            }}
-          >
-            <span>{tech.name}</span>
-          </div>
+        {techArray.map((tech, i) => (
+          <TechColumn tech={tech} index={i} />
         ))}
       </Paper>
     </div>

@@ -2,6 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import Header from "../../common/Header";
 import TopBanner from "./TopBanner";
+import AboutMe from "./AboutMe";
+import Projects from "../projects/index";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -15,6 +17,7 @@ function HomePage() {
     <div className={classes.root}>
       <Header />
       <TopBanner />
+      <Projects />
     </div>
   );
 }
