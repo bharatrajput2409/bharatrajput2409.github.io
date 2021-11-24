@@ -4,6 +4,7 @@ import Header from "../../common/Header";
 import TopBanner from "./TopBanner";
 import AboutMe from "./AboutMe";
 import Projects from "../projects/index";
+import Footer from "../../common/Footer";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -18,6 +19,7 @@ function HomePage() {
       <Header />
       <TopBanner />
       <Projects />
+      <Footer />
     </div>
   );
 }

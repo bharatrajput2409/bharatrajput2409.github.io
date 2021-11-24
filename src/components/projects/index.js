@@ -19,6 +19,7 @@ function Projects() {
   return (
     <div className={classes.root}>
       <WebClubProject />
+      <WebClubProject />
     </div>
   );
 }

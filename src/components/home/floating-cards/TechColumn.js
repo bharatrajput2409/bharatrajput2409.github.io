@@ -2,6 +2,7 @@ import React from "react";
 import { alpha, makeStyles, Tooltip } from "@material-ui/core";
 
 import constant from "../../../theme/constants.json";
+import { withStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -33,6 +34,15 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const AppTooltip = withStyles({
+  tooltip: {
+    background: constant.blueColor,
+    color: "white",
+    fontWeight: "600",
+    fontSize: "1rem",
+  },
+})(Tooltip);
+
 function TechColumn({ tech, index }) {
   const classes = useStyles();
   const ref = React.useRef(tech.knowledge * 25);
@@ -44,7 +54,7 @@ function TechColumn({ tech, index }) {
     setTop(ref.current);
   };
   return (
-    <Tooltip title={`${tech.knowledge}/10`}>
+    <AppTooltip title={`${tech.knowledge}/10`}>
       <div
         className={classes.root}
         style={{
@@ -64,7 +74,7 @@ function TechColumn({ tech, index }) {
           <span>{tech.name}</span>
         </div>
       </div>
-    </Tooltip>
+    </AppTooltip>
   );
 }
 

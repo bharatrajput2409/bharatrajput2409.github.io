@@ -5,10 +5,11 @@ const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
     maxWidth: "1400px",
-    margin: "0 auto",
+    margin: ".5rem auto",
     background: "rgba(0,0,0,0.1)",
     padding: "1rem",
     borderRadius: ".5rem",
+    backdropFilter: "blur(5px)",
   },
   rightContainer: {
     flexGrow: 1,
