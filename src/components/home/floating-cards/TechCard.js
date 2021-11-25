@@ -1,5 +1,5 @@
 import React from "react";
-import { alpha, makeStyles, Paper, Typography } from "@material-ui/core";
+import { makeStyles, Paper } from "@material-ui/core";
 
 import constants from "../../../theme/constants.json";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";

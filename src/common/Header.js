@@ -6,6 +6,10 @@ import constant from "../theme/constants.json";
 const useStyles = makeStyles(() => ({
   root: {
     height: constant.headerHeight,
+    position: "sticky",
+    top: "0",
+    zIndex: "1000",
+    backdropFilter: "blur(10px)",
   },
   wraper: {
     maxWidth: "1400px",

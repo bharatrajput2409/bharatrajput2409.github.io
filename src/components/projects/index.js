@@ -1,9 +1,7 @@
 import React from "react";
-import { CardHeader, makeStyles, Paper } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
 import linearBanner_1 from "../../media/linearBanner_1.svg";
-import bharatImage from "../../media/bharat_rajput.png";
-import { withStyles } from "@material-ui/core/styles";
 import WebClubProject from "./WebClubProject";
 
 const useStyles = makeStyles(() => ({

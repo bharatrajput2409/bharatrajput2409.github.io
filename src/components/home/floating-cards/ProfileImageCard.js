@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Avatar,
-  CardHeader,
-  makeStyles,
-  Paper,
-  Typography,
-} from "@material-ui/core";
+import { makeStyles, Paper } from "@material-ui/core";
 
 import bharatImage from "../../../media/bharat_rajput_blue.png";
 
@@ -50,7 +44,7 @@ function ProfileImageCard() {
   return (
     <div className={classes.wraper}>
       <Paper className={classes.root}>
-        <img src={bharatImage} alt="bharat image" className={classes.image} />
+        <img src={bharatImage} alt="bharat " className={classes.image} />
       </Paper>
     </div>
   );

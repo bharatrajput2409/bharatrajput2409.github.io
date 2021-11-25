@@ -2,9 +2,9 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import Header from "../../common/Header";
 import TopBanner from "./TopBanner";
-import AboutMe from "./AboutMe";
 import Projects from "../projects/index";
 import Footer from "../../common/Footer";
+import SendMessage from "./SendMessage";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -19,6 +19,7 @@ function HomePage() {
       <Header />
       <TopBanner />
       <Projects />
+      <SendMessage />
       <Footer />
     </div>
   );

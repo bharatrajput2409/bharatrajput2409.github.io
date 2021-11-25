@@ -35,17 +35,7 @@ function Footer() {
   return (
     <div className={classes.root}>
       <div className={classes.topBanner}>
-        <Typography
-          style={{ padding: ".5rem 1rem .25rem 1rem", fontWeight: "600" }}
-        >
-          {" "}
-          Send me a message{" "}
-        </Typography>
-        <textarea
-          rows="5"
-          className={classes.textarea}
-          placeholder="Type message here..."
-        />
+        <Typography>Bharat Singh Rajput</Typography>
       </div>
       <Typography className={classes.bottomBanner}>
         Developed with <FavoriteIcon style={{ margin: "0 .5rem" }} /> Bharat

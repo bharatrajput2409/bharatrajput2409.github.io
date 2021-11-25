@@ -1,10 +1,18 @@
 import React from "react";
-import { CardHeader, makeStyles, Paper, Typography } from "@material-ui/core";
+import {
+  CardHeader,
+  makeStyles,
+  Paper,
+  Tooltip,
+  Typography,
+} from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 
 import bharatImage from "../../../media/Growth.png";
 import constant from "../../../theme/constants.json";
+import VisitingUser from "../../../api/visiting-users";
+import { Skeleton } from "@material-ui/lab";
 
 const useStyles = makeStyles(() => ({
   wraper: {
@@ -33,6 +41,8 @@ const useStyles = makeStyles(() => ({
       "rgba(159, 162, 191, 0.18) 0px 9px 16px, rgba(159, 162, 191, 0.32) 0px 2px 2px",
     margin: ".5rem",
     animation: "cardUpDown 2.1s ease-in-out infinite",
+    height: "150px",
+    overflow: "hidden",
   },
   avatar: {
     backgroundSize: "cover",
@@ -41,14 +51,21 @@ const useStyles = makeStyles(() => ({
   },
   countContainer: {
     fontSize: "24px",
-    textAlign: "right",
-    paddingRight: "2rem",
     color: "green",
+    textAlign: "right",
+    paddingRight: "1rem",
   },
   percentageMore: {
     padding: ".4rem",
     color: "rgba(0,0,0,0.6)",
     textAlign: "right",
+  },
+  skeleton: {
+    margin: "0",
+    padding: "0",
+    height: "5.2rem",
+    transform: "scale(1, 1)",
+    transformOrigin: "0 60%",
   },
 }));
 
@@ -64,24 +81,59 @@ const AppCardHeader = withStyles({
     color: constant.shiningBlue,
   },
 })(CardHeader);
+const AppTooltip = withStyles({
+  tooltip: {
+    background: constant.blueColor,
+    color: "white",
+    fontSize: "1rem",
+    fontWeight: "600",
+  },
+})(Tooltip);
 
 function Card3() {
   const classes = useStyles();
+  const [data, setData] = React.useState(null);
+  const getData = async () => {
+    try {
+      var res = await VisitingUser.getVisitedUsers();
+      setData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  React.useEffect(() => {
+    getData();
+  }, []);
   return (
     <div className={classes.wraper}>
-      <Paper className={classes.root}>
-        <AppCardHeader
-          avatar={<img src={bharatImage} className={classes.avatar} />}
-          title="User Visited"
-        />
-        <Typography className={classes.countContainer}>
-          <ArrowUpwardIcon />
-          100
-        </Typography>
-        <Typography className={classes.percentageMore}>
-          +20% more then last week
-        </Typography>
-      </Paper>
+      <AppTooltip title="Total users visited so far">
+        <Paper className={classes.root}>
+          <AppCardHeader
+            avatar={
+              <img
+                src={bharatImage}
+                className={classes.avatar}
+                alt="bharat profile"
+              />
+            }
+            title="User Visited"
+          />
+          {data ? (
+            <>
+              <Typography className={classes.countContainer}>
+                <ArrowUpwardIcon />
+                {data?.total}
+              </Typography>
+              <Typography className={classes.percentageMore}>
+                {((data?.thisWeek - data?.lastWeek) / data?.lastWeek) * 100}%
+                then last week
+              </Typography>
+            </>
+          ) : (
+            <Skeleton className={classes.skeleton} animation="wave" />
+          )}
+        </Paper>
+      </AppTooltip>
     </div>
   );
 }

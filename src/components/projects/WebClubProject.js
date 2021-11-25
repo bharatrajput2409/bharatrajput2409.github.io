@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Avatar,
-  List,
-  ListItem,
-  ListItemText,
-  makeStyles,
-  Typography,
-} from "@material-ui/core";
+import { Avatar, makeStyles, Typography } from "@material-ui/core";
 
 import ProjectCard from "./ProjectCard";
 import community_web_image from "../../media/community_web_image.svg";

@@ -56,7 +56,12 @@ function TopBanner() {
             ready to explore many more technology{" "}
           </Typography>
           <div className={classes.knowmore}>
-            <AppButton>Know more</AppButton>
+            <AppButton
+              variant="contained"
+              style={{ borderRadius: "2rem", fontWeight: "600" }}
+            >
+              Know more
+            </AppButton>
           </div>
           <TechCard />
         </div>
