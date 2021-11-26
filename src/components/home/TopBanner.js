@@ -57,7 +57,7 @@ function TopBanner() {
           </Typography>
           <div className={classes.knowmore}>
             <AppButton
-              variant="contained"
+              variant="outlined"
               style={{ borderRadius: "2rem", fontWeight: "600" }}
             >
               Know more
