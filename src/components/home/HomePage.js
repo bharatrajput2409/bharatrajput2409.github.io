@@ -5,6 +5,7 @@ import TopBanner from "./TopBanner";
 import Projects from "../projects/index";
 import Footer from "../../common/Footer";
 import SendMessage from "./SendMessage";
+import TechUsed from "./TechUsed";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -18,6 +19,7 @@ function HomePage() {
     <div className={classes.root}>
       <Header />
       <TopBanner />
+      <TechUsed />
       <Projects />
       <SendMessage />
       <Footer />

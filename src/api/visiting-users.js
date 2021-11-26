@@ -6,6 +6,7 @@ export default class VisitingUser {
   static async getVisitedUsers() {
     try {
       var res = await axios.get(baseUrl);
+      console.log(res);
     } catch (err) {
       console.log(err);
     }
