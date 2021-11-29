@@ -5,22 +5,42 @@ import AppButton from "../../common/Button";
 import FloatingCards from "./FloatingCards";
 import TechCard from "./floating-cards/TechCard";
 import bg_image from "../../media/top_banner_bg.svg";
-const useStyles = makeStyles(() => ({
+import bg_image_mobile from "../../media/top_banner_bg_mobile.svg";
+const useStyles = makeStyles((theme) => ({
   root: {
-    background: "linear-gradient(98.77deg, #FFFFFF 4.47%, #F1F4F8 119.99%)",
+    // background: "linear-gradient(98.77deg, #FFFFFF 4.47%, #F1F4F8 119.99%)",
     backgroundImage: `url(${bg_image})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `url(${bg_image_mobile})`,
+      backgroundSize: "cover",
+    },
+    overflow: "hidden",
   },
   wraper: {
     display: "flex",
     maxWidth: "1400px",
     margin: "auto",
     paddingTop: "3rem",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      paddingTop: "0rem",
+      padding: "0 1rem",
+    },
   },
   leftContainer: {
     width: "50%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
   rightContainer: {
     width: "50%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
+    minHeight: "420px",
   },
   hiContainer: {
     color: "rgba(0,0,0,.7)",
@@ -30,14 +50,27 @@ const useStyles = makeStyles(() => ({
   nameContainer: {
     fontSize: "48px",
     color: constant.lightBlackText,
+    fontWeight: "600",
   },
   myDescription: {
     color: "rgba(0,0,0,.7)",
     marginTop: "1rem",
     marginRight: "5rem",
+    [theme.breakpoints.down("md")]: {
+      marginRight: "0rem",
+      padding: 0,
+    },
   },
   knowmore: {
     margin: "2rem 0 2rem 2rem",
+    [theme.breakpoints.down("md")]: {
+      margin: "2rem 0 2rem 0rem",
+    },
+  },
+  onlyDesktop: {
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
 }));
 
@@ -52,18 +85,29 @@ function TopBanner() {
             I'm Bharat Singh Rajput
           </Typography>
           <Typography className={classes.myDescription}>
-            I am a passionate developer having knolwedge of may technology and
-            ready to explore many more technology{" "}
+            I am a final year student pursuing B.Tech at National Institute of
+            Technology Karnataka, Surathkal.My primary interests lie in full
+            stack web development and I enjoy learning about new technologies
+            and building useful things with it.
           </Typography>
           <div className={classes.knowmore}>
             <AppButton
               variant="outlined"
               style={{ borderRadius: "2rem", fontWeight: "600" }}
             >
-              Know more
+              <a
+                href="https://drive.google.com/file/d/1cqcPSkPL_DSmtZvi7KaJl-3fQb_UZjQI/view"
+                style={{ textDecoration: "none", color: "inherit" }}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Resume
+              </a>
             </AppButton>
           </div>
-          <TechCard />
+          <div className={classes.onlyDesktop}>
+            <TechCard />
+          </div>
         </div>
         <div className={classes.rightContainer}>
           <FloatingCards />

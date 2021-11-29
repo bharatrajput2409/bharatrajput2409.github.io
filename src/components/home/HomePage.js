@@ -20,7 +20,7 @@ function HomePage() {
       <Header />
       <TopBanner />
       <TechUsed />
-      <Projects />
+      {/* <Projects /> */}
       <SendMessage />
       <Footer />
     </div>

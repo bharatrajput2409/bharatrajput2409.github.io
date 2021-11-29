@@ -10,10 +10,11 @@ import {
 import { withStyles } from "@material-ui/core/styles";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import LaunchIcon from "@material-ui/icons/Launch";
-import InstagramIcon from "@material-ui/icons/Instagram";
 import MailOutlineTwoToneIcon from "@material-ui/icons/MailOutlineTwoTone";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import AppTooltip from "../../../common/Tooltip";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   wraper: {
     margin: "0 .5rem",
     transformStyle: "preserve-3d",
@@ -32,6 +33,12 @@ const useStyles = makeStyles(() => ({
     webkitUserSelect: "none",
     msUserSelect: "none",
     userSelect: " none",
+    [theme.breakpoints.down("md")]: {
+      left: "-6rem",
+      top: "3rem",
+      transform:
+        "translate(0px) perspective(5200px) rotate(90deg) rotateY(-45deg) rotateZ(-45deg) scale(.8,.8) ",
+    },
   },
   root: {
     width: "250px",
@@ -45,6 +52,10 @@ const useStyles = makeStyles(() => ({
     padding: ".25rem 1rem",
     fontWeight: "600",
     color: "rgba(0,0,0,0.6)",
+  },
+  anchor: {
+    textDecoration: "none",
+    color: "inherit",
   },
 }));
 
@@ -72,39 +83,60 @@ function Card2() {
         <Typography className={classes.socialHeading}>
           Social handles
         </Typography>
-        <AppCardHeader
-          avatar={<LinkedInIcon />}
-          title="@bharatrajput"
-          action={
-            <Tooltip title="visit my profile">
-              <IconButton>
-                <LaunchIcon />
-              </IconButton>
-            </Tooltip>
-          }
-        />
-        <AppCardHeader
-          avatar={<MailOutlineTwoToneIcon />}
-          title="@bharatsinghnitk"
-          action={
-            <Tooltip title="visit my profile">
-              <IconButton>
-                <LaunchIcon />
-              </IconButton>
-            </Tooltip>
-          }
-        />
-        <AppCardHeader
-          avatar={<InstagramIcon />}
-          title="@bharat._.singh._"
-          action={
-            <Tooltip title="visit my profile">
-              <IconButton>
-                <LaunchIcon />
-              </IconButton>
-            </Tooltip>
-          }
-        />
+        <a
+          className={classes.anchor}
+          target="_blank"
+          rel="noreferrer"
+          href="https://www.linkedin.com/in/bharatsinghrajput/"
+        >
+          <AppTooltip title="Visit my LinkedIn profile">
+            <AppCardHeader
+              avatar={<LinkedInIcon />}
+              title="@bharatrajput"
+              action={
+                <IconButton>
+                  <LaunchIcon />
+                </IconButton>
+              }
+            />
+          </AppTooltip>
+        </a>
+        <a
+          className={classes.anchor}
+          target="_blank"
+          rel="noreferrer"
+          href="https://github.com/bharatrajput2409"
+        >
+          <AppTooltip title="Visit my Github profile">
+            <AppCardHeader
+              avatar={<GitHubIcon />}
+              title="@bharatrajput2409"
+              action={
+                <IconButton>
+                  <LaunchIcon />
+                </IconButton>
+              }
+            />
+          </AppTooltip>
+        </a>
+        <a
+          className={classes.anchor}
+          target="_blank"
+          rel="noreferrer"
+          href="mailto:bharatsinghnitk@gmail.com"
+        >
+          <AppTooltip title="Mail me">
+            <AppCardHeader
+              avatar={<MailOutlineTwoToneIcon />}
+              title="bharatsinghnitk@gmail"
+              action={
+                <IconButton>
+                  <LaunchIcon />
+                </IconButton>
+              }
+            />
+          </AppTooltip>
+        </a>
       </Paper>
     </div>
   );

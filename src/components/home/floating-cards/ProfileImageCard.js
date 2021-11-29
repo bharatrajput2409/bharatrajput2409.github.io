@@ -3,7 +3,7 @@ import { makeStyles, Paper } from "@material-ui/core";
 
 import bharatImage from "../../../media/bharat_rajput_blue.png";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   wraper: {
     margin: "0 .5rem",
     transformStyle: "preserve-3d",
@@ -22,6 +22,12 @@ const useStyles = makeStyles(() => ({
     webkitUserSelect: "none",
     msUserSelect: "none",
     userSelect: " none",
+    [theme.breakpoints.down("md")]: {
+      left: "0rem",
+      top: "11rem",
+      transform:
+        "translate(0px) perspective(5200px) rotate(90deg) rotateY(-45deg) rotateZ(-45deg) scale(.8,.8) ",
+    },
   },
   root: {
     width: "250px",

@@ -5,18 +5,21 @@ import constants from "../../../theme/constants.json";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import TechColumn from "./TechColumn";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   wraper: {},
   root: {
     marginTop: "7rem",
-    width: "550px",
+    maxWidth: "520px",
+    width: "100%",
     height: "300px",
     transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
     boxShadow:
       "rgba(159, 162, 191, 0.18) 0px 9px 16px, rgba(159, 162, 191, 0.32) 0px 2px 2px",
-    margin: ".5rem",
-    animation: "cardLeftRight 2.1s ease-in-out infinite 600ms",
+    // animation: "cardLeftRight 2.1s ease-in-out infinite 600ms",
     position: "relative",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "0",
+    },
   },
   heading: {
     padding: ".5rem",
@@ -89,7 +92,7 @@ function TechCard() {
         <div className={classes.horizontalLine}>
           <span
             className={classes.markerline}
-            style={{ right: "0", transform: "translate(50%,calc(-50% + 1px))" }}
+            style={{ right: "0", transform: "translate(50%,calc(-50% + 3px))" }}
           >
             <ExpandLessIcon style={{ transform: "rotateZ(90deg)" }} />
           </span>

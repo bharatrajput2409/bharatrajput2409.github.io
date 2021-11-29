@@ -125,8 +125,12 @@ function Card3() {
                 {data?.total}
               </Typography>
               <Typography className={classes.percentageMore}>
-                {((data?.thisWeek - data?.lastWeek) / data?.lastWeek) * 100}%
-                then last week
+                {Math.floor(
+                  ((data?.thisWeek - data?.lastWeek) / data?.lastWeek) *
+                    100 *
+                    100
+                ) / 100}
+                % then last week
               </Typography>
             </>
           ) : (

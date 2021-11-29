@@ -10,7 +10,7 @@ import {
 import bharatImage from "../../../media/bharat_rajput_blue.png";
 import { withStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   wraper: {
     margin: "0 .5rem",
     transformStyle: "preserve-3d",
@@ -29,6 +29,17 @@ const useStyles = makeStyles(() => ({
     webkitUserSelect: "none",
     msUserSelect: "none",
     userSelect: " none",
+    [theme.breakpoints.down("md")]: {
+      left: "8rem",
+      top: "5rem",
+      transform:
+        "translate(0px) perspective(5200px) rotate(-90deg) rotateY(45deg) rotateZ(45deg) scale(.8,.8)",
+      "&:hover": {
+        transform:
+          "scale(1.5,1.5) translate(0px) perspective(5200px) rotate(-90deg) rotateY(45deg) rotateZ(45deg)",
+        zIndex: "1000",
+      },
+    },
   },
   root: {
     width: "280px",
@@ -77,7 +88,14 @@ function Card1() {
           technology Karnataka.
         </Typography>
         <Typography className={classes.checkoutMore}>
-          Checkout my Resume
+          <a
+            href="https://drive.google.com/file/d/1cqcPSkPL_DSmtZvi7KaJl-3fQb_UZjQI/view"
+            style={{ textDecoration: "none", color: "inherit" }}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Checkout my Resume
+          </a>
         </Typography>
       </Paper>
     </div>

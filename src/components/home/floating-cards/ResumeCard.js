@@ -7,7 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 import constant from "../../../theme/constants.json";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   wraper: {
     margin: "0 .5rem",
     transformStyle: "preserve-3d",
@@ -22,9 +22,20 @@ const useStyles = makeStyles(() => ({
         "scale(1.5,1.5) translate(0px) perspective(5200px) rotate(90deg) rotateY(-45deg) rotateZ(-45deg)",
       zIndex: "1000",
     },
+    [theme.breakpoints.down("md")]: {
+      left: "3rem",
+      top: "-8rem",
+      transform:
+        "translate(0px) perspective(5200px) rotate(90deg) rotateY(-45deg) rotateZ(-45deg) scale(.85,.85) ",
+      "&:hover": {
+        transform:
+          "scale(1.2,1.2) translate(0px) perspective(5200px) rotate(90deg) rotateY(-45deg) rotateZ(-45deg)",
+        zIndex: "1000",
+      },
+    },
   },
   root: {
-    width: "300px",
+    width: "100%",
     height: "300px",
     transition: "box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
     boxShadow:
@@ -67,15 +78,32 @@ function ResumeCard() {
         <Paper className={classes.root}>
           <div className={classes.flex}>
             <Typography style={{ fontWeight: "bold" }}>Bharat Singh</Typography>
-            <Typography style={{ fontSize: "10px" }}>
+            <Typography
+              style={{ fontSize: "10px" }}
+              component="a"
+              href="mailto:bharatsinghnitk@gmail.com"
+            >
               bharatsinghnitk@gmail.com
             </Typography>
           </div>
           <div className={classes.flex}>
             <Typography className={classes.smalltext} style={{ color: "blue" }}>
-              <LinkedInIcon className={classes.icons} />
-              LinkedIn <GitHubIcon className={classes.icons} />
-              GitHub
+              <a
+                href="https://www.linkedin.com/in/bharatsinghrajput/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <LinkedInIcon className={classes.icons} />
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/bharatrajput2409"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <GitHubIcon className={classes.icons} />
+                GitHub
+              </a>
             </Typography>
             <Typography
               style={{ fontSize: "10px", transform: "translateY(-10px)" }}
@@ -132,6 +160,9 @@ function ResumeCard() {
               <Typography
                 className={classes.smalltext}
                 style={{ color: "blue" }}
+                component="a"
+                href="https://hesc.nitk.ac.in"
+                target="_blank"
               >
                 hesc.nitk.ac.in
               </Typography>
@@ -148,6 +179,9 @@ function ResumeCard() {
               <Typography
                 className={classes.smalltext}
                 style={{ color: "blue" }}
+                component="a"
+                href="https://webclub.nitk.ac.in/#/blogs"
+                target="_blank"
               >
                 webclub.nitk.ac.in
               </Typography>
@@ -164,6 +198,9 @@ function ResumeCard() {
               <Typography
                 className={classes.smalltext}
                 style={{ color: "blue" }}
+                component="a"
+                href="http://bharatrajput2409.pythonanywhere.com"
+                target="_blank"
               >
                 Link
               </Typography>
@@ -191,7 +228,12 @@ function ResumeCard() {
             </Typography>
             <Typography className={classes.smalltext}>Web Lead</Typography>
           </div>
-          <Typography className={classes.checkout}>
+          <Typography
+            className={classes.checkout}
+            component="a"
+            target="_blank"
+            href="https://drive.google.com/file/d/1cqcPSkPL_DSmtZvi7KaJl-3fQb_UZjQI/view"
+          >
             Checkout Full Resume
           </Typography>
         </Paper>

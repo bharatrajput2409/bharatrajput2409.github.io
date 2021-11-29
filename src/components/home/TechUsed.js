@@ -4,17 +4,12 @@ import { makeStyles, Tooltip, Typography } from "@material-ui/core";
 import constant from "../../theme/constants.json";
 import { withStyles } from "@material-ui/styles";
 
-const useStyles = makeStyles(() => ({
-  root: {
-    backgroundImage: `url(${require("../../media/tech-used.svg").default})`,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  },
+const useStyles = makeStyles((theme) => ({
+  root: {},
   wraper: {
     maxWidth: "1400px",
     margin: "0 auto",
-    padding: "1rem 0",
-    backdropFilter: "blur(5px)",
+    padding: "1rem",
   },
   heading: {
     fontSize: "1.5rem",
@@ -30,9 +25,14 @@ const useStyles = makeStyles(() => ({
     justifyContent: "space-around",
     flexWrap: "wrap",
     padding: "2rem 0",
+    [theme.breakpoints.down("md")]: {},
   },
   image: {
     height: "70px",
+    margin: "1rem 3rem",
+    [theme.breakpoints.down("md")]: {
+      margin: ".5rem",
+    },
   },
 }));
 
@@ -54,8 +54,6 @@ function TechUsed() {
     { name: "ReactJS", img: "react.svg" },
     { name: "MySql", img: "mysql.svg" },
     { name: "MongoDB", img: "mongodb.svg" },
-  ];
-  const tech2 = [
     { name: "Django", img: "django.svg" },
     { name: "Express", img: "express.svg" },
     { name: "NodeJS", img: "nodejs.svg" },
@@ -71,18 +69,6 @@ function TechUsed() {
         </Typography>
         <div className={classes.imageContainer}>
           {tech1.map((tech) => (
-            <AppTooltip title={tech.name}>
-              <img
-                src={require(`../../media/${tech.img}`).default}
-                alt={tech.name}
-                key={tech.name}
-                className={classes.image}
-              />
-            </AppTooltip>
-          ))}
-        </div>
-        <div className={classes.imageContainer}>
-          {tech2.map((tech) => (
             <AppTooltip title={tech.name}>
               <img
                 src={require(`../../media/${tech.img}`).default}

@@ -1,22 +1,30 @@
 import React from "react";
 import {
   alpha,
-  Dialog,
-  IconButton,
+  CircularProgress,
   makeStyles,
-  TextField,
   Typography,
 } from "@material-ui/core";
-import { withStyles } from "@material-ui/styles";
-import CloseIcon from "@material-ui/icons/Close";
-import Input from "@material-ui/core/Input";
-import AppButton from "../../common/Button";
 
-const useStyles = makeStyles(() => ({
+import constant from "../../theme/constants.json";
+import AppButton from "../../common/Button";
+import EmailMessage from "../../api/email-message";
+
+const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: "1400px",
     margin: "0 auto",
+    backgroundImage: `url(${require("../../media/chat.svg").default})`,
+    backgroundPosition: "right",
+    backgroundRepeat: "no-repeat",
+    padding: "0 1rem",
+  },
+  wraper: {
+    backdropFilter: "blur(1px)",
     padding: "1rem 0",
+    [theme.breakpoints.down("md")]: {
+      backdropFilter: "blur(5px)",
+    },
   },
   heading: {
     fontWeight: "600",
@@ -43,45 +51,73 @@ const useStyles = makeStyles(() => ({
     color: "rgba(0,0,0,0.6)",
     outline: "none",
   },
+  message: {
+    color: "red",
+  },
 }));
-
-const AppInput = withStyles({
-  root: {
-    display: "block",
-    borderRadius: ".5rem",
-    padding: ".25rem",
-    maxWidth: "400px",
-  },
-  focused: {
-    // background: "red",
-  },
-})(Input);
 
 function MessageDialog() {
   const classes = useStyles();
+  const [form, setForm] = React.useState({ _replyto: "", message: "" });
+  const [sentmessage, setSentmessage] = React.useState({ color: "red" });
+  const [loading, setLoading] = React.useState(false);
+  const handleChange = (e) => {
+    setForm((old) => ({ ...old, [e.target.name]: e.target.value }));
+  };
+  const handleSubmit = async () => {
+    setLoading(true);
+    let res = await EmailMessage.sendMessage(form);
+    setLoading(false);
+    if (res === "Message sent") {
+      setForm({ _replyto: "", message: "" });
+      setSentmessage({ color: "green", message: res });
+      return;
+    }
+    setSentmessage({ color: "red", message: res });
+  };
   return (
-    <div className={classes.root}>
-      <div className={classes.topWraper}>
-        <Typography className={classes.heading}>Send Me A Message</Typography>
+    <div className={classes.root} id="send-message">
+      <div className={classes.wraper}>
+        <div className={classes.topWraper}>
+          <Typography className={classes.heading}>Send Me A Message</Typography>
+        </div>
+        <Typography className={classes.label} variant="caption" component="div">
+          Your email
+        </Typography>
+        <input
+          className={classes.input}
+          placeholder="Enter email"
+          name="_replyto"
+          type="email"
+          value={form._replyto}
+          onChange={handleChange}
+        />
+        <Typography className={classes.label} variant="caption" component="div">
+          Message
+        </Typography>
+        <textarea
+          className={classes.input}
+          placeholder="Enter email"
+          name="message"
+          rows="4"
+          style={{ maxWidth: "600px" }}
+          value={form.message}
+          onChange={handleChange}
+        />
+        <br />
+        <AppButton
+          variant="outlined"
+          style={{ borderRadius: "2rem" }}
+          onClick={handleSubmit}
+        >
+          {loading ? (
+            <CircularProgress color={constant.shiningBlue} size="1.3rem" />
+          ) : (
+            "Send"
+          )}
+        </AppButton>
+        <div style={{ color: sentmessage.color }}>{sentmessage.message}</div>
       </div>
-      <Typography className={classes.label} variant="caption" component="div">
-        Your email
-      </Typography>
-      <input className={classes.input} placeholder="Enter email" name="email" />
-      <Typography className={classes.label} variant="caption" component="div">
-        Message
-      </Typography>
-      <textarea
-        className={classes.input}
-        placeholder="Enter email"
-        name="email"
-        rows="4"
-        style={{ maxWidth: "600px" }}
-      />
-      <br />
-      <AppButton variant="outlined" style={{ borderRadius: "2rem" }}>
-        Send
-      </AppButton>
     </div>
   );
 }
