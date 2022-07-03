@@ -13,6 +13,7 @@ import bharatImage from "../../../media/Growth.png";
 import constant from "../../../theme/constants.json";
 import VisitingUser from "../../../api/visiting-users";
 import { Skeleton } from "@material-ui/lab";
+import clsx from "clsx";
 
 const useStyles = makeStyles(() => ({
   wraper: {
@@ -112,7 +113,7 @@ function Card3() {
             avatar={
               <img
                 src={bharatImage}
-                className={classes.avatar}
+                className={clsx(classes.avatar,'colorFullText')}
                 alt="bharat profile"
               />
             }

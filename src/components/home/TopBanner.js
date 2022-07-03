@@ -6,9 +6,10 @@ import FloatingCards from "./FloatingCards";
 import TechCard from "./floating-cards/TechCard";
 import bg_image from "../../media/top_banner_bg.svg";
 import bg_image_mobile from "../../media/top_banner_bg_mobile.svg";
+import clsx from "clsx";
 const useStyles = makeStyles((theme) => ({
   root: {
-    // background: "linear-gradient(98.77deg, #FFFFFF 4.47%, #F1F4F8 119.99%)",
+    background: 'linear-gradient(90deg,#1e8bff,#6955ff 45%,#a83af5 50%,#c03ada 75%)',
     backgroundImage: `url(${bg_image})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -53,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "600",
   },
   myDescription: {
-    color: "rgba(0,0,0,.7)",
+    color: "#6955ff",
     marginTop: "1rem",
     marginRight: "5rem",
     [theme.breakpoints.down("md")]: {
@@ -80,8 +81,8 @@ function TopBanner() {
     <div className={classes.root}>
       <div className={classes.wraper}>
         <div className={classes.leftContainer}>
-          <Typography className={classes.hiContainer}>Hi,</Typography>
-          <Typography className={classes.nameContainer}>
+          <Typography className={clsx(classes.hiContainer,'colorFullText')}>Hi,</Typography>
+          <Typography className={clsx(classes.nameContainer,'colorFullText')}>
             I'm Bharat Singh Rajput
           </Typography>
           <Typography className={classes.myDescription}>

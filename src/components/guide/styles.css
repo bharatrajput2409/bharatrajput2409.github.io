@@ -1,0 +1,53 @@
+.colorFullText{
+    background: linear-gradient(90deg,#1e8bff,#6955ff 45%,#a83af5 50%,#c03ada 75%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.heading{
+    font-size:32px;
+    font-weight:600;
+    padding-bottom:.8rem;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+}
+.colorFullTextPink{
+    color: #dc43c6;
+}
+.translateY50{
+    transform: translate(0,-25px);
+}
+@keyframes fadeInOut {
+    0% 
+    {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes translateLeft {
+    0% {
+        transform: translate(0,0);
+    }
+    100% {
+        transform: translate(-100%,50px);
+    }
+}
+@keyframes translateRight {
+    0% 
+    {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+@keyframes translateTop {
+    0% 
+    {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}

@@ -4,7 +4,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 
 import constant from "../theme/constants.json";
 import link_bg from "../media/glassEffect.gif";
-
+import './style.css'
+import clsx from "clsx";
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: constant.headerHeight,
@@ -22,11 +23,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  logotext: {
-    fontSize: "32px",
-    color: constant.lightBlackText,
-    fontWeight: "600",
-  },
   linksContainer: {
     display: "flex",
     [theme.breakpoints.down("md")]: {
@@ -42,11 +38,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: ".5rem",
     padding: ".25rem .5rem",
     textDecoration: "none",
-    // position: "relative",
-    // "&:before": {
-    //   content: "0",
-    //   background: "red",
-    // },
+    
   },
   menuIcon: {
     display: "none",
@@ -112,13 +104,13 @@ function Header() {
     <>
       <div className={classes.root}>
         <div className={classes.wraper}>
-          <Typography className={classes.logotext} component="div">
+          <Typography className='colorFullText logoTextBharatRajput' component="div">
             BharatRajput
           </Typography>
           <div className={classes.linksContainer}>
             {links.map((link) => (
               <Typography
-                className={classes.links}
+                className={clsx(classes.links,'colorFullText')}
                 component="a"
                 variant="caption"
                 href={link.href}
@@ -129,7 +121,7 @@ function Header() {
             ))}
           </div>
           <IconButton className={classes.menuIcon} onClick={handleDrawer}>
-            <MenuIcon style={{ height: "2rem", width: "2rem" }} />
+            <MenuIcon style={{ height: "2rem", width: "2rem" }} color="linear-gradient(90deg,#1e8bff,#6955ff 45%,#a83af5 50%,#c03ada 75%)" />
           </IconButton>
         </div>
       </div>
